@@ -3,17 +3,16 @@
 
 #include <QMainWindow>
 #include <QStackedWidget>
-#include "enumpages.h"
+#include "pagecontroller.h"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
     MainWindow(QWidget* parent = nullptr);
-    void SetPage(Pages Page);
-    QWidget* GetPage(Pages Page);
 
 private:
     QStackedWidget* stackedWidget;
+    PageController* pageController;
 };
 #endif // MAINWINDOW_H

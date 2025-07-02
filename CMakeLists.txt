@@ -37,18 +37,24 @@ else()
     else()
         find_package(Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt5 REQUIRED COMPONENTS Widgets)
+find_package(Qt5 REQUIRED COMPONENTS Core)
+find_package(Qt5 REQUIRED COMPONENTS Widgets)
 
         add_executable(PackageInstaller
             ${PROJECT_SOURCES}
             enumpages.h
             pagemain.h pagemain.cpp
             pageinstaller.h pageinstaller.cpp
+            pagecontroller.h pagecontroller.cpp
+            basepage.h basepage.cpp
         )
     endif()
 endif()
 
 target_link_libraries(PackageInstaller PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 target_link_libraries(PackageInstaller PRIVATE Qt5::Widgets)
+target_link_libraries(PackageInstaller PRIVATE Qt5::Widgets)
+target_link_libraries(PackageInstaller PRIVATE Qt5::Core)
 target_link_libraries(PackageInstaller PRIVATE Qt5::Widgets)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

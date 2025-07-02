@@ -4,20 +4,10 @@
 
 MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     stackedWidget = new QStackedWidget(this);
+    setCentralWidget(stackedWidget);
 
-    PageMain* pageMain = new PageMain(this);
-    PageInstaller* pageInstaller = new PageInstaller(this);
+    pageController = new PageController(stackedWidget, this);
 
-    stackedWidget->addWidget(pageMain);
-    stackedWidget->addWidget(pageInstaller);
-
-    this->setCentralWidget(stackedWidget);
-}
-
-void MainWindow::SetPage(Pages page) {
-    stackedWidget->setCurrentIndex(static_cast<int>(page));
-}
-
-QWidget* MainWindow::GetPage(Pages page) {
-    return stackedWidget->widget(static_cast<int>(page));
+    pageController->registerPage(new PageMain(this));
+    pageController->registerPage(new PageInstaller(this));
 }
