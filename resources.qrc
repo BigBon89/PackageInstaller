@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>packages/wine.deb</file>
+        <file>packages/postgresql.deb</file>
+    </qresource>
+</RCC>

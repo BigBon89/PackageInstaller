@@ -1,15 +1,21 @@
-#include "pageinstaller.h"
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QPushButton>
+#include "pageinstaller.h"
 
 PageInstaller::PageInstaller(QWidget* parent) : BasePage{parent} {
+    packageInstaller = new PackageInstaller(this);
+
     QVBoxLayout* layoutMain = new QVBoxLayout(this);
 
-    QLabel* labelText = new QLabel("Текст", this);
+    comboBox = new QComboBox(this);
+    layoutMain->addWidget(comboBox);
 
-    labelText->setAlignment(Qt::AlignCenter);
-    layoutMain->addWidget(labelText);
+    QList<QPair<QString, QString>> packages = packageInstaller->GetAvailablePackages();
+    for (int index = 0; index < packages.size(); index++) {
+        const auto& pkg = packages.at(index);
+        comboBox->addItem(pkg.first, pkg.second);
+    }
 
     QHBoxLayout* layoutButton = new QHBoxLayout();
     QPushButton* buttonBack = new QPushButton("Назад", this);
@@ -30,5 +36,6 @@ void PageInstaller::ButtonBackClicked() {
 }
 
 void PageInstaller::ButtonInstallClicked() {
-
+    QString selectedFile = comboBox->currentData().toString();
+    packageInstaller->InstallPackage(selectedFile);
 }

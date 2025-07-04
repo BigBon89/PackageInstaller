@@ -1,7 +1,7 @@
-#include "pagemain.h"
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QPushButton>
+#include "pagemain.h"
 
 PageMain::PageMain(QWidget* parent) : BasePage{parent} {
     QVBoxLayout* layoutMain = new QVBoxLayout(this);

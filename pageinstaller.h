@@ -2,7 +2,9 @@
 #define PAGEINSTALLER_H
 
 #include <QWidget>
+#include <QComboBox>
 #include "basepage.h"
+#include "packageinstaller.h"
 
 class PageInstaller : public BasePage {
     Q_OBJECT
@@ -13,6 +15,10 @@ public:
 private slots:
     void ButtonBackClicked();
     void ButtonInstallClicked();
+
+private:
+    PackageInstaller* packageInstaller;
+    QComboBox* comboBox;
 };
 
 #endif // PAGEINSTALLER_H
