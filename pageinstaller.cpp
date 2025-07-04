@@ -9,7 +9,15 @@ PageInstaller::PageInstaller(QWidget* parent) : BasePage{parent} {
     QVBoxLayout* layoutMain = new QVBoxLayout(this);
 
     comboBox = new QComboBox(this);
-    layoutMain->addWidget(comboBox);
+    comboBox->setMaximumWidth(200);
+    QHBoxLayout* hLayout = new QHBoxLayout();
+    hLayout->addStretch();
+    hLayout->addWidget(comboBox);
+    hLayout->addStretch();
+
+    layoutMain->addStretch();
+    layoutMain->addLayout(hLayout);
+    layoutMain->addStretch();
 
     QList<QPair<QString, QString>> packages = packageInstaller->GetAvailablePackages();
     for (int index = 0; index < packages.size(); index++) {
